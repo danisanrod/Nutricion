@@ -1,1 +1,71 @@
-[{"fecha":"2026-10-06","eventos":[{"id":"20261006-1502-entreno","tipo":"entreno","hora":"15:02","titulo":"Pecho y tríceps","ejercicios":[{"nombre":"Press banca (barra)","series":2,"reps":5,"peso_kg":75},{"nombre":"Press banca (barra)","series":1,"reps":3,"peso_kg":75},{"nombre":"Press banca (barra)","series":1,"reps":6,"peso_kg":70},{"nombre":"Press militar (mancuernas)","series":3,"reps":8,"peso_kg":20},{"nombre":"Elevación lateral (polea, a una mano)","series":1,"reps":5,"peso_kg":6.8},{"nombre":"Elevación lateral (polea, a una mano)","series":2,"reps":8,"peso_kg":4.5},{"nombre":"Extensión de tríceps (polea)","series":2,"reps":8,"peso_kg":34.3},{"nombre":"Extensión de tríceps (polea)","series":1,"reps":10,"peso_kg":34.3},{"nombre":"Extensión de tríceps (polea)","series":1,"reps":6,"peso_kg":34.3}],"kcal_quemadas":400,"foto":""}]}]
+[
+ {
+  "fecha": "2026-10-06",
+  "eventos": [
+   {
+    "id": "20261006-1502-entreno",
+    "tipo": "entreno",
+    "hora": "15:02",
+    "titulo": "Pecho y tríceps",
+    "ejercicios": [
+     {
+      "nombre": "Press banca (barra)",
+      "series": 2,
+      "reps": 5,
+      "peso_kg": 75
+     },
+     {
+      "nombre": "Press banca (barra)",
+      "series": 1,
+      "reps": 3,
+      "peso_kg": 75
+     },
+     {
+      "nombre": "Press banca (barra)",
+      "series": 1,
+      "reps": 6,
+      "peso_kg": 70
+     },
+     {
+      "nombre": "Press militar (mancuernas)",
+      "series": 3,
+      "reps": 8,
+      "peso_kg": 20
+     },
+     {
+      "nombre": "Elevación lateral (polea, a una mano)",
+      "series": 1,
+      "reps": 5,
+      "peso_kg": 6.8
+     },
+     {
+      "nombre": "Elevación lateral (polea, a una mano)",
+      "series": 2,
+      "reps": 8,
+      "peso_kg": 4.5
+     },
+     {
+      "nombre": "Extensión de tríceps (polea)",
+      "series": 2,
+      "reps": 8,
+      "peso_kg": 34.3
+     },
+     {
+      "nombre": "Extensión de tríceps (polea)",
+      "series": 1,
+      "reps": 10,
+      "peso_kg": 34.3
+     },
+     {
+      "nombre": "Extensión de tríceps (polea)",
+      "series": 1,
+      "reps": 6,
+      "peso_kg": 34.3
+     }
+    ],
+    "kcal_quemadas": 400,
+    "foto": "fotos/2026-10-06/1502-hevy.jpg"
+   }
+  ]
+ }
+]
