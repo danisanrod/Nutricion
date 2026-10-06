@@ -98,6 +98,17 @@
     "carbos": 24,
     "grasa": 0,
     "foto": "fotos/2026-10-06/1734-melon.jpg"
+   },
+   {
+    "id": "20261006-2131-comida",
+    "tipo": "comida",
+    "hora": "21:31",
+    "descripcion": "Cena: revuelto de 3 huevos, media pechuga de pollo (~70 g), 3 quesitos light y champiñones - estimado",
+    "kcal": 470,
+    "proteina": 50,
+    "carbos": 4,
+    "grasa": 25,
+    "foto": "fotos/2026-10-06/2131-cena-revuelto.jpg"
    }
   ]
  }
