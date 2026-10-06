@@ -73,6 +73,27 @@ nav.tabs button.on{color:var(--tx);background:var(--card2);font-weight:600}
 .fum .sub{font-size:13px;fill:var(--mut);text-anchor:middle}
 .fum .msg{min-height:44px;margin-top:10px;font-size:16px;font-weight:600;transition:opacity .4s}
 .fum .ah{color:var(--ac);font-weight:700}
+details.mac{background:var(--card);border-radius:var(--r);margin:12px 0;padding:0 14px}
+details.mac summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 0;cursor:pointer;font-size:14px}
+details.mac summary::-webkit-details-marker{display:none}
+details.mac summary .t{font-weight:600}
+details.mac summary .chev{color:var(--mut);transition:transform .2s}
+details.mac[open] summary .chev{transform:rotate(90deg)}
+.dots{display:flex;gap:10px;font-size:12px;color:var(--mut)}
+.dots i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px;background:var(--mut)}
+.dots i.ok{background:var(--ac)}.dots i.low{background:var(--warn)}.dots i.hi{background:var(--bad)}
+.mrow{margin:4px 0 14px}
+.mrow .top{display:flex;justify-content:space-between;font-size:14px}
+.mrow .top span:last-child{color:var(--mut);font-size:12px}
+.mbar{position:relative;height:8px;background:var(--card2);border-radius:5px;margin:6px 0 4px}
+.mbar .rg{position:absolute;top:0;bottom:0;background:#4ade8033;border-radius:5px}
+.mbar .v{position:absolute;top:0;bottom:0;left:0;border-radius:5px;background:var(--mut)}
+.mbar .v.ok{background:var(--ac)}.mbar .v.low{background:var(--warn)}.mbar .v.hi{background:var(--bad)}
+.mrow .st{font-size:12px;color:var(--mut)}
+.mrow .st.ok{color:var(--ac)}.mrow .st.low{color:var(--warn)}.mrow .st.hi{color:var(--bad)}
+.tips{border-top:1px solid var(--card2);padding:10px 0 14px;font-size:14px}
+.tips ul{margin:6px 0 0;padding-left:18px;color:var(--mut)}
+.tips li{margin:3px 0}
 .err{background:#3a1d1d;color:#fecaca;border-radius:12px;padding:10px;margin:10px 0;font-size:14px}
 </style>
 </head>
@@ -153,9 +174,40 @@ function evHTML(e){
   if(e.foto)h+='<img loading="lazy" decoding="async" alt="" src="'+esc(RAW+e.foto)+'" onerror="this.remove()">';
   return h+'</div></div>';
 }
+var MAC={proteina:[130,160],carbos:[170,230],grasa:[50,65]};
+function macHTML(t,esDia){
+  var M=(S.cfg.macros)||MAC,hoy=S.day===today(),defs=[["proteina","Proteína",t.p,"g"],["carbos","Carbos",t.c,"g"],["grasa","Grasa",t.g,"g"]];
+  var sts={},rows="",dots="";
+  defs.forEach(function(x){
+    var rg=M[x[0]]||MAC[x[0]],v=x[2],st=v>rg[1]?"hi":(v>=rg[0]?"ok":"low"),mx=rg[1]*1.25;
+    sts[x[0]]=st;
+    var txt=st==="ok"?"Dentro del objetivo":st==="hi"?"Te pasas "+r(v-rg[1])+" g":(hoy?"Faltan "+r(rg[0]-v)+" g":"Quedaste "+r(rg[0]-v)+" g por debajo");
+    rows+='<div class="mrow"><div class="top"><span>'+x[1]+' <b>'+r(v)+' g</b></span><span>objetivo '+rg[0]+'-'+rg[1]+' g</span></div>'
+     +'<div class="mbar"><div class="rg" style="left:'+rg[0]/mx*100+'%;width:'+(rg[1]-rg[0])/mx*100+'%"></div><div class="v '+st+'" style="width:'+Math.min(100,v/mx*100)+'%"></div></div><div class="st '+st+'">'+txt+'</div></div>';
+    dots+='<span><i class="'+st+'"></i>'+x[1].charAt(0)+'</span>';
+  });
+  var tips=[],gp=(M.proteina||MAC.proteina)[0]-t.p,restKcal=S.cfg.objetivo_kcal-t.kcal+t.q;
+  if(t.comidas&&hoy||!hoy){}
+  if(sts.proteina==="low"&&hoy){
+    if(gp<=15)tips.push("Proteína: te faltan "+r(gp)+" g. Un yogur proteico o 2 huevos lo cierran.");
+    else if(gp<=30)tips.push("Proteína: te faltan "+r(gp)+" g. Una lata de atún (~25 g) o 200 g de skyr.");
+    else if(gp<=50)tips.push("Proteína: te faltan "+r(gp)+" g. Una pechuga de pollo (~140 g, unos 40 g de proteína).");
+    else tips.push("Proteína: te faltan "+r(gp)+" g. Pechuga o pescado en la cena y skyr o huevos de snack.");
+    if(restKcal<200)tips.push("Te quedan pocas kcal: elige lo magro (claras, atún al natural, pollo).");
+  }
+  if(sts.grasa==="hi")tips.push("Grasa alta: hoy evita más aceite, frutos secos y embutidos.");
+  if(sts.carbos==="hi")tips.push("Carbos altos: cena con verdura y proteína, sin pan ni arroz.");
+  if(sts.carbos==="low"&&hoy&&restKcal>250)tips.push("Carbos bajos: fruta, arroz o patata te dan energía para entrenar.");
+  if(sts.proteina==="ok"&&sts.grasa!=="hi"&&sts.carbos!=="hi"&&(sts.carbos==="ok"||!hoy||sts.grasa==="ok"))tips.push("Va muy bien. Mantén verdura y fruta en la cena.");
+  if(!t.comidas)tips=["Aún no hay comidas registradas este día."];
+  else if(!tips.length)tips.push("Sin avisos. Suma verdura y agua para cerrar el día.");
+  tips.push("Verdura en dos comidas y 2-3 L de agua.");
+  return '<details class="mac"'+(S.macOpen?' open':'')+'><summary><span class="t">Macros</span><span class="dots">'+dots+'<span class="chev">›</span></span></summary>'+rows+'<div class="tips"><b>Para cerrar bien el día</b><ul>'+tips.map(function(x){return'<li>'+esc(x)+'</li>'}).join("")+'</ul></div></details>';
+}
+document.addEventListener("toggle",function(e){if(e.target.classList&&e.target.classList.contains("mac"))S.macOpen=e.target.open},true);
 function vDia(){
   var d=dayData(S.day),h='<div class="nav"><button data-go="-1">‹</button><div class="t">'+fechaLarga(S.day)+(S.day===today()?" · hoy":"")+'</div><button data-go="1">›</button></div>';
-  h+=summary(d.t);
+  h+=summary(d.t)+macHTML(d.t);
   if(!d.ev.length)h+='<div class="empty">Sin registros este día.</div>';
   d.ev.forEach(function(e){h+=evHTML(e)});
   return h;
