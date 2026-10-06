@@ -87,6 +87,17 @@
     "carbos": 84,
     "grasa": 6,
     "foto": "fotos/2026-10-06/1724-pollo-arroz.jpg"
+   },
+   {
+    "id": "20261006-1734-comida",
+    "tipo": "comida",
+    "hora": "17:34",
+    "descripcion": "Postre: 3 rodajas de melón (~300 g) - estimado",
+    "kcal": 100,
+    "proteina": 1,
+    "carbos": 24,
+    "grasa": 0,
+    "foto": "fotos/2026-10-06/1734-melon.jpg"
    }
   ]
  }
