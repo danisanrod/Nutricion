@@ -79,7 +79,7 @@ var FALLBACK={user:"danisanrod",repo:"Nutricion"};
 var host=location.hostname,parts=location.pathname.split("/").filter(Boolean);
 var user=/\.github\.io$/.test(host)?host.split(".")[0]:FALLBACK.user;
 var repo=/\.github\.io$/.test(host)&&parts[0]?parts[0]:FALLBACK.repo;
-var RAW="https://raw.githubusercontent.com/"+user+"/"+repo+"/main/";
+var RAW=/\.github\.io$/.test(host)?location.origin+"/"+repo+"/":"https://raw.githubusercontent.com/"+user+"/"+repo+"/main/";
 var S={view:"dia",day:today(),cfg:{objetivo_kcal:1900},months:{},last:0,err:""};
 var MESES=["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
 var DS=["L","M","X","J","V","S","D"];
