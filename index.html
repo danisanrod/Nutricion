@@ -53,6 +53,16 @@ main{padding:0 14px;max-width:720px;margin:0 auto}
 nav.tabs{position:fixed;bottom:0;left:0;right:0;background:#12151bf2;backdrop-filter:blur(8px);display:flex;padding:6px 8px calc(6px + env(safe-area-inset-bottom));border-top:1px solid var(--card2)}
 nav.tabs button{flex:1;background:none;border:0;color:var(--mut);font-size:14px;padding:10px;border-radius:12px}
 nav.tabs button.on{color:var(--tx);background:var(--card2);font-weight:600}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.cal .dh{text-align:center;font-size:12px;color:var(--mut);padding-bottom:2px}
+.cell{aspect-ratio:1/1.1;background:var(--card2);border-radius:10px;padding:4px;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;border:1px solid transparent;min-width:0}
+.cell.off{background:none;cursor:default}
+.cell .n{font-size:11px;color:var(--mut);display:flex;justify-content:space-between}
+.cell .n em{font-style:normal;font-size:11px}
+.cell b{font-size:13px;text-align:center;font-weight:700}
+.cell.ok{background:#14301f}.cell.ok b{color:var(--ac)}
+.cell.bad{background:#3a1d1d}.cell.bad b{color:var(--bad)}
+.cell.hoy{border-color:var(--tx)}
 .err{background:#3a1d1d;color:#fecaca;border-radius:12px;padding:10px;margin:10px 0;font-size:14px}
 </style>
 </head>
@@ -152,14 +162,18 @@ function vSemana(){
 }
 function vMes(){
   var k=S.day.slice(0,7),a=k.split("-"),y=+a[0],mo=+a[1],obj=S.cfg.objetivo_kcal,n=new Date(y,mo,0).getDate();
-  var tot={kcal:0,q:0,p:0,c:0,g:0,dias:0,ent:0},rows="";
-  for(var i=1;i<=n;i++){var s=k+"-"+pad(i),d=dayData(s);
-    if(d.t.comidas||d.t.entrenos){if(d.t.comidas)tot.dias++;tot.kcal+=d.t.kcal;tot.q+=d.t.q;tot.p+=d.t.p;tot.c+=d.t.c;tot.g+=d.t.g;tot.ent+=d.t.entrenos;
-      rows+='<div class="row" data-d="'+s+'"><span>'+i+' '+MESES[mo-1].slice(0,3)+(d.t.entrenos?" 🏋️":"")+'</span><span>'+r(d.t.kcal)+' kcal'+(d.t.kcal>obj?" ⚠️":"")+'</span></div>'}}
+  var tot={kcal:0,q:0,p:0,c:0,g:0,dias:0,ent:0},cells="",lead=(new Date(y,mo-1,1).getDay()+6)%7,hoy=today();
+  for(var j=0;j<lead;j++)cells+='<div class="cell off"></div>';
+  for(var i=1;i<=n;i++){var s=k+"-"+pad(i),d=dayData(s),has=d.t.comidas||d.t.entrenos,cls="cell";
+    if(d.t.comidas){tot.dias++}
+    tot.kcal+=d.t.kcal;tot.q+=d.t.q;tot.p+=d.t.p;tot.c+=d.t.c;tot.g+=d.t.g;tot.ent+=d.t.entrenos;
+    if(d.t.comidas)cls+=d.t.kcal>obj?" bad":" ok";
+    if(s===hoy)cls+=" hoy";
+    cells+='<div class="'+cls+'" data-d="'+s+'"><span class="n">'+i+(d.t.entrenos?'<em>🏋️</em>':"")+'</span>'+(has?'<b>'+r(obj-d.t.kcal+d.t.q)+'</b>':"")+'</div>';}
   var h='<div class="nav"><button data-gom="-1">‹</button><div class="t">'+MESES[mo-1]+' '+y+'</div><button data-gom="1">›</button></div>';
+  h+='<div class="card"><div class="cal">'+DS.map(function(x){return'<div class="dh">'+x+'</div>'}).join("")+cells+'</div><div class="mut" style="margin-top:8px">Número grande = kcal restantes. Verde: dentro del objetivo · Rojo: te pasaste.</div></div>';
   h+='<div class="card"><div class="grid"><div><b>'+(tot.dias?r(tot.kcal/tot.dias):0)+'</b><span class="mut">kcal/día media</span></div><div><b>'+tot.ent+'</b><span class="mut">entrenos</span></div><div><b>'+r(tot.q)+'</b><span class="mut">kcal quemadas</span></div></div>'
    +'<div class="grid"><div><b>'+(tot.dias?r(tot.p/tot.dias):0)+' g</b><span class="mut">proteína/día</span></div><div><b>'+(tot.dias?r(tot.c/tot.dias):0)+' g</b><span class="mut">carbos/día</span></div><div><b>'+(tot.dias?r(tot.g/tot.dias):0)+' g</b><span class="mut">grasa/día</span></div></div></div>';
-  h+='<div class="card">'+(rows||'<div class="empty">Sin registros este mes.</div>')+'</div>';
   return h;
 }
 function render(){
