@@ -1,0 +1,71 @@
+name: Registro
+on:
+  issue_comment:
+    types: [created]
+permissions:
+  contents: write
+  issues: write
+concurrency:
+  group: registro
+  cancel-in-progress: false
+jobs:
+  escribir:
+    if: github.event.comment.body == '#GO' && github.event.comment.user.login == github.repository_owner && github.event.issue.user.login == github.repository_owner
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      REPO: ${{ github.repository }}
+      ISSUE: ${{ github.event.issue.number }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Aplicar cambios
+        run: |
+          python3 - <<'PY'
+          import os, re, json, base64, subprocess, urllib.request
+          repo, num = os.environ['REPO'], os.environ['ISSUE']
+          tok = os.environ['GH_TOKEN']
+          def api(url):
+              r = urllib.request.Request('https://api.github.com' + url, headers={'Authorization': 'Bearer ' + tok, 'Accept': 'application/vnd.github+json'})
+              return json.load(urllib.request.urlopen(r))
+          issue = api('/repos/%s/issues/%s' % (repo, num))
+          comments = api('/repos/%s/issues/%s/comments?per_page=100' % (repo, num))
+          body = re.sub(r'^```(?:json)?\s*|\s*```$', '', issue['body'].strip())
+          job = json.loads(body)
+          parts = {}
+          for c in comments:
+              m = re.match(r'#PART (\S+) (\d+)\n', c['body'])
+              if m and c['user']['login'] == issue['user']['login']:
+                  parts.setdefault(m.group(1), {})[int(m.group(2))] = c['body'][m.end():]
+          ok = re.compile(r'^(index\.html|manifest\.webmanifest|sw\.js|\.nojekyll|icon-\d+\.png|data/[\w.\-]+\.json|fotos/[\w\-]+/[\w.\-]+\.(jpg|jpeg|png|webp))$')
+          for f in job['files']:
+              p = f['path']
+              assert ok.match(p) and '..' not in p, 'ruta no permitida: ' + p
+              if 'text' in f:
+                  data = f['text'].encode()
+              elif 'b64' in f:
+                  data = base64.b64decode(f['b64'])
+              else:
+                  segs = parts[p]
+                  data = base64.b64decode(''.join(re.sub(r'\s', '', segs[i]) for i in sorted(segs)))
+              assert len(data) < 5000000
+              os.makedirs(os.path.dirname(p) or '.', exist_ok=True)
+              open(p, 'wb').write(data)
+              subprocess.check_call(['git', 'add', p])
+          open('/tmp/msg', 'w').write(job.get('message', 'Actualizar datos'))
+          PY
+          git config user.name "registro-bot"
+          git config user.email "registro-bot@users.noreply.github.com"
+          if git diff --cached --quiet; then
+            gh issue comment "$ISSUE" --repo "$REPO" --body "OK sin cambios"
+          else
+            git commit -F /tmp/msg
+            git pull --rebase origin main
+            git push origin HEAD:main
+            gh issue comment "$ISSUE" --repo "$REPO" --body "OK $(git rev-parse --short HEAD)"
+          fi
+          gh issue close "$ISSUE" --repo "$REPO"
+      - name: Error
+        if: failure()
+        run: gh issue comment "$ISSUE" --repo "$REPO" --body "ERROR ver Actions"
