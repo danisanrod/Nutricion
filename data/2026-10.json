@@ -3,6 +3,17 @@
   "fecha": "2026-10-06",
   "eventos": [
    {
+    "id": "20261006-1100-comida",
+    "tipo": "comida",
+    "hora": "11:00",
+    "descripcion": "Dani tomó un café grande con leche semidesnatada y 200 g de jamón serrano",
+    "kcal": 620,
+    "proteina": 70,
+    "carbos": 14,
+    "grasa": 34,
+    "foto": ""
+   },
+   {
     "id": "20261006-1502-entreno",
     "tipo": "entreno",
     "hora": "15:02",
