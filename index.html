@@ -196,12 +196,12 @@ function macHTML(t,esDia){
     if(restKcal<200)tips.push("Te quedan pocas kcal: elige lo magro (claras, atún al natural, pollo).");
   }
   if(sts.grasa==="hi")tips.push("Grasa alta: hoy evita más aceite, frutos secos y embutidos.");
-  if(sts.carbos==="hi")tips.push("Carbos altos: cena con verdura y proteína, sin pan ni arroz.");
+  if(sts.carbos==="hi")tips.push("Carbos altos: cena solo con proteína, sin pan ni arroz.");
   if(sts.carbos==="low"&&hoy&&restKcal>250)tips.push("Carbos bajos: fruta, arroz o patata te dan energía para entrenar.");
-  if(sts.proteina==="ok"&&sts.grasa!=="hi"&&sts.carbos!=="hi"&&(sts.carbos==="ok"||!hoy||sts.grasa==="ok"))tips.push("Va muy bien. Mantén verdura y fruta en la cena.");
+  if(sts.proteina==="ok"&&sts.grasa!=="hi"&&sts.carbos!=="hi"&&(sts.carbos==="ok"||!hoy||sts.grasa==="ok"))tips.push("Va muy bien. Mantén la proteína en la cena.");
   if(!t.comidas)tips=["Aún no hay comidas registradas este día."];
-  else if(!tips.length)tips.push("Sin avisos. Suma verdura y agua para cerrar el día.");
-  tips.push("Verdura en dos comidas y 2-3 L de agua.");
+  else if(!tips.length)tips.push("Sin avisos. Bebe agua para cerrar el día.");
+  tips.push("Bebe 2-3 L de agua.");
   return '<details class="mac"'+(S.macOpen?' open':'')+'><summary><span class="t">Macros</span><span class="dots">'+dots+'<span class="chev">›</span></span></summary>'+rows+'<div class="tips"><b>Para cerrar bien el día</b><ul>'+tips.map(function(x){return'<li>'+esc(x)+'</li>'}).join("")+'</ul></div></details>';
 }
 document.addEventListener("toggle",function(e){if(e.target.classList&&e.target.classList.contains("mac"))S.macOpen=e.target.open},true);
