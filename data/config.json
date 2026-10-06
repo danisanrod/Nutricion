@@ -1,1 +1,8 @@
-{ "objetivo_kcal": 1900 }
+{
+ "objetivo_kcal": 1900,
+ "sin_fumar": {
+  "inicio": "2026-10-07",
+  "meta_dias": 30,
+  "precio_dia": 4.5
+ }
+}

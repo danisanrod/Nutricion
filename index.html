@@ -63,6 +63,16 @@ nav.tabs button.on{color:var(--tx);background:var(--card2);font-weight:600}
 .cell.ok{background:#14301f}.cell.ok b{color:var(--ac)}
 .cell.bad{background:#3a1d1d}.cell.bad b{color:var(--bad)}
 .cell.hoy{border-color:var(--tx)}
+.fum{text-align:center;padding:18px 14px 16px}
+.fum svg{width:min(78vw,300px);height:auto;display:block;margin:0 auto}
+.fum .ring{fill:none;stroke-width:14;stroke-linecap:round}
+.fum .bg{stroke:var(--card2)}
+.fum .fg{stroke:var(--ac);transition:stroke-dashoffset .8s}
+.fum .num{font-size:78px;font-weight:800;fill:var(--tx);text-anchor:middle}
+.fum .lbl{font-size:17px;fill:var(--mut);text-anchor:middle}
+.fum .sub{font-size:13px;fill:var(--mut);text-anchor:middle}
+.fum .msg{min-height:44px;margin-top:10px;font-size:16px;font-weight:600;transition:opacity .4s}
+.fum .ah{color:var(--ac);font-weight:700}
 .err{background:#3a1d1d;color:#fecaca;border-radius:12px;padding:10px;margin:10px 0;font-size:14px}
 </style>
 </head>
@@ -176,9 +186,27 @@ function vMes(){
    +'<div class="grid"><div><b>'+(tot.dias?r(tot.p/tot.dias):0)+' g</b><span class="mut">proteína/día</span></div><div><b>'+(tot.dias?r(tot.c/tot.dias):0)+' g</b><span class="mut">carbos/día</span></div><div><b>'+(tot.dias?r(tot.g/tot.dias):0)+' g</b><span class="mut">grasa/día</span></div></div></div>';
   return h;
 }
+var FRASES=["Venga, tú puedes. 💪","Cada día sin fumar cuenta.","Hoy ganas tú, no el cigarro.","Tus pulmones ya te lo agradecen.","Un día más. Sigue así.","Las ganas pasan en unos minutos. Tú te quedas.","Ya has hecho lo más difícil: empezar.","Cada día es más fácil que el anterior.","Estás más fuerte de lo que crees.","Respira hondo. Lo estás haciendo genial."];
+var fi=Math.floor(Math.random()*FRASES.length);
+function fumHTML(){
+  var f=S.cfg.sin_fumar;if(!f||!f.inicio)return"";
+  var ini=pd(f.inicio),h0=new Date();h0=new Date(h0.getFullYear(),h0.getMonth(),h0.getDate());
+  var dias=Math.max(0,Math.round((h0-ini)/864e5)+1);
+  var hitos=[7,14,30,60,90,180,365,730,1095],meta=f.meta_dias||0;
+  if(!meta||dias>=meta){meta=hitos.filter(function(x){return x>dias})[0]||dias+365}
+  var C=2*Math.PI*118,pct=Math.min(1,dias/meta),precio=+f.precio_dia||0;
+  var ahorro=(dias*precio).toFixed(2).replace(".",",");
+  var sub=dias?("meta: "+meta+" días"):"empieza el "+pd(f.inicio).getDate()+" de "+MESES[pd(f.inicio).getMonth()];
+  return '<div class="card fum"><svg viewBox="0 0 280 280" role="img" aria-label="Días sin fumar"><circle class="ring bg" cx="140" cy="140" r="118"/>'
+   +'<circle class="ring fg" cx="140" cy="140" r="118" transform="rotate(-90 140 140)" stroke-dasharray="'+C.toFixed(1)+'" stroke-dashoffset="'+(C*(1-pct)).toFixed(1)+'"/>'
+   +'<text class="num" x="140" y="150">'+dias+'</text><text class="lbl" x="140" y="180">'+(dias===1?"día sin fumar":"días sin fumar")+'</text><text class="sub" x="140" y="205">'+sub+'</text></svg>'
+   +(precio?'<div class="mut">Ahorrado: <span class="ah">'+ahorro+' €</span></div>':"")
+   +'<div class="msg" id="msg">'+FRASES[fi%FRASES.length]+'</div></div>';
+}
+setInterval(function(){var m=document.getElementById("msg");if(!m)return;m.style.opacity=0;setTimeout(function(){fi++;m.textContent=FRASES[fi%FRASES.length];m.style.opacity=1},400)},12000);
 function render(){
   var y=window.scrollY,app=document.getElementById("app");
-  app.innerHTML=(S.err?'<div class="err">'+esc(S.err)+'</div>':"")+(S.view==="dia"?vDia():S.view==="semana"?vSemana():vMes());
+  app.innerHTML=fumHTML()+(S.err?'<div class="err">'+esc(S.err)+'</div>':"")+(S.view==="dia"?vDia():S.view==="semana"?vSemana():vMes());
   [].forEach.call(document.querySelectorAll("nav.tabs button"),function(b){b.classList.toggle("on",b.dataset.v===S.view)});
   window.scrollTo(0,y);tick();
 }
