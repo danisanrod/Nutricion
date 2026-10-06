@@ -98,6 +98,17 @@
     "carbos": 24,
     "grasa": 0,
     "foto": "fotos/2026-10-06/1734-melon.jpg"
+   },
+   {
+    "id": "20261006-2012-comida",
+    "tipo": "comida",
+    "hora": "20:12",
+    "descripcion": "Cena: revuelto de media pechuga de pollo (~70 g) con 2 huevos - estimado",
+    "kcal": 270,
+    "proteina": 30,
+    "carbos": 2,
+    "grasa": 14,
+    "foto": ""
    }
   ]
  }
