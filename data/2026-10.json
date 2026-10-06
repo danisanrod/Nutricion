@@ -81,10 +81,10 @@
     "id": "20261006-1724-comida",
     "tipo": "comida",
     "hora": "17:24",
-    "descripcion": "Dos pechugas de pollo a la plancha (~280 g) con arroz blanco (~200 g cocido) - estimado",
-    "kcal": 720,
-    "proteina": 70,
-    "carbos": 56,
+    "descripcion": "Dos pechugas de pollo a la plancha (~280 g) con arroz blanco (~300 g cocido) - estimado",
+    "kcal": 850,
+    "proteina": 73,
+    "carbos": 84,
     "grasa": 11,
     "foto": "fotos/2026-10-06/1724-pollo-arroz.jpg"
    }
