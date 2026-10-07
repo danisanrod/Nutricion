@@ -203,6 +203,18 @@
     "volumen_kg": 8192,
     "hevy_url": "https://hevy.com/workout/UN84i5gKvqw",
     "hevy_url_original": "https://hevy.com/workout/650fe480-f200-4753-8363-1b11619d85a5"
+   },
+   {
+    "id": "20261007-1458-entreno",
+    "tipo": "entreno",
+    "hora": "14:58",
+    "titulo": "Caminata al gimnasio: 20 min ida + 20 min vuelta, ritmo normal (40 min) - 230 kcal estimadas",
+    "ejercicios": [],
+    "kcal_quemadas": 230,
+    "foto": "",
+    "duracion_min": 40,
+    "ritmo": "normal",
+    "nota": "Estimación orientativa de gasto total; sin datos de reloj ni velocidad medida."
    }
   ]
  }
