@@ -136,6 +136,17 @@
     "carbos": 4,
     "grasa": 2,
     "foto": "fotos/2026-10-07/1021-cafe.jpg"
+   },
+   {
+    "id": "20261007-1225-comida",
+    "tipo": "comida",
+    "hora": "12:25",
+    "descripcion": "Batido: 1 scoop de proteína (~30 g), leche semidesnatada (~400 ml), cacao puro 100% Valor (~10 g) y crema de cacahuete Prozis (~15-20 g) - cantidades y macros estimados",
+    "kcal": 455,
+    "proteina": 45,
+    "carbos": 25,
+    "grasa": 21,
+    "foto": "fotos/2026-10-07/1225-batido.jpg"
    }
   ]
  }
