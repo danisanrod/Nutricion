@@ -122,5 +122,21 @@
     "foto": ""
    }
   ]
+ },
+ {
+  "fecha": "2026-10-07",
+  "eventos": [
+   {
+    "id": "20261007-1021-comida",
+    "tipo": "comida",
+    "hora": "10:21",
+    "descripcion": "Café con leche - estimado",
+    "kcal": 50,
+    "proteina": 3,
+    "carbos": 4,
+    "grasa": 2,
+    "foto": "fotos/2026-10-07/1021-cafe.jpg"
+   }
+  ]
  }
 ]
