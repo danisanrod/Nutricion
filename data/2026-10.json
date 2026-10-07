@@ -147,6 +147,62 @@
     "carbos": 25,
     "grasa": 21,
     "foto": "fotos/2026-10-07/1225-batido.jpg"
+   },
+   {
+    "id": "20261007-1447-entreno",
+    "tipo": "entreno",
+    "hora": "14:47",
+    "titulo": "Pierna (30 min) - 250 kcal estimadas",
+    "ejercicios": [
+     {
+      "nombre": "Press de Piernas",
+      "series": 1,
+      "reps": 8,
+      "peso_kg": 100
+     },
+     {
+      "nombre": "Press de Piernas",
+      "series": 1,
+      "reps": 8,
+      "peso_kg": 140
+     },
+     {
+      "nombre": "Press de Piernas",
+      "series": 1,
+      "reps": 8,
+      "peso_kg": 110
+     },
+     {
+      "nombre": "Abducción de Cadera (Máquina)",
+      "series": 3,
+      "reps": 8,
+      "peso_kg": 72
+     },
+     {
+      "nombre": "Abducción de Cadera (Máquina)",
+      "series": 1,
+      "reps": 4,
+      "peso_kg": 72
+     },
+     {
+      "nombre": "Abducción de Cadera (Máquina)",
+      "series": 4,
+      "reps": 8,
+      "peso_kg": 68
+     },
+     {
+      "nombre": "Curl de Pierna Sentado",
+      "series": 3,
+      "reps": 8,
+      "peso_kg": 50
+     }
+    ],
+    "kcal_quemadas": 250,
+    "foto": "fotos/2026-10-07/1447-hevy.jpg",
+    "duracion_min": 30,
+    "volumen_kg": 8192,
+    "hevy_url": "https://hevy.com/workout/UN84i5gKvqw",
+    "hevy_url_original": "https://hevy.com/workout/650fe480-f200-4753-8363-1b11619d85a5"
    }
   ]
  }
