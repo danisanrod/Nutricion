@@ -215,6 +215,17 @@
     "duracion_min": 40,
     "ritmo": "normal",
     "nota": "Estimación orientativa de gasto total; sin datos de reloj ni velocidad medida."
+   },
+   {
+    "id": "20261007-1632-comida",
+    "tipo": "comida",
+    "hora": "16:32",
+    "descripcion": "Comida: 5 pinchos de cerdo (~300 g cocinados), arroz blanco (~300 g cocido) y champiñones (~80 g), con aceite/adobo - raciones y macros estimados por foto",
+    "kcal": 1150,
+    "proteina": 85,
+    "carbos": 86,
+    "grasa": 51,
+    "foto": "fotos/2026-10-07/1632-pinchos-arroz.jpg"
    }
   ]
  }
