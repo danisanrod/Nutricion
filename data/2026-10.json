@@ -226,6 +226,17 @@
     "carbos": 86,
     "grasa": 51,
     "foto": "fotos/2026-10-07/1632-pinchos-arroz.jpg"
+   },
+   {
+    "id": "20261007-2252-comida",
+    "tipo": "comida",
+    "hora": "22:52",
+    "descripcion": "Melón en trozos (~200 g) - ración y macros estimados por foto",
+    "kcal": 70,
+    "proteina": 1,
+    "carbos": 16,
+    "grasa": 0,
+    "foto": "fotos/2026-10-07/2252-melon.jpg"
    }
   ]
  }
