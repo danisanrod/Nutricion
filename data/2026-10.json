@@ -275,6 +275,17 @@
     "carbos": 72,
     "grasa": 4,
     "foto": "fotos/2026-10-08/1925-tostadas.jpg"
+   },
+   {
+    "id": "20261008-2327-comida",
+    "tipo": "comida",
+    "hora": "23:27",
+    "descripcion": "Cena: pierogis de patata, 8-9 piezas según el usuario; contabilizadas 9 (~225 g) - peso, kcal y macros estimados por foto/receta genérica",
+    "kcal": 410,
+    "proteina": 10,
+    "carbos": 72,
+    "grasa": 7,
+    "foto": "fotos/2026-10-08/2327-pierogis.jpg"
    }
   ]
  }
