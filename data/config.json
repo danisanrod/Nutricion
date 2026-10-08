@@ -1,8 +1,21 @@
 {
  "objetivo_kcal": 1900,
  "sin_fumar": {
-  "inicio": "2026-10-07",
+  "inicio": "2026-10-08",
   "meta_dias": 30,
-  "precio_dia": 4.5
- }
+  "precio_dia": 4.5,
+  "dia_cero": true
+ },
+ "historial_sin_fumar": [
+  {
+   "inicio": "2026-10-07",
+   "fin": "2026-10-08",
+   "motivo": "Usuario informó que fumó; reinicio del contador",
+   "config_anterior": {
+    "inicio": "2026-10-07",
+    "meta_dias": 30,
+    "precio_dia": 4.5
+   }
+  }
+ ]
 }
