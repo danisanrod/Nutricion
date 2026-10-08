@@ -239,5 +239,21 @@
     "foto": "fotos/2026-10-07/2252-melon.jpg"
    }
   ]
+ },
+ {
+  "fecha": "2026-10-08",
+  "eventos": [
+   {
+    "id": "20261008-1056-comida",
+    "tipo": "comida",
+    "hora": "10:56",
+    "descripcion": "Café con leche (~100 ml de leche), sin azúcar añadido contabilizado - estimado por foto",
+    "kcal": 50,
+    "proteina": 3,
+    "carbos": 4,
+    "grasa": 2,
+    "foto": "fotos/2026-10-08/1056-cafe.jpg"
+   }
+  ]
  }
 ]
