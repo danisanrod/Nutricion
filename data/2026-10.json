@@ -253,6 +253,17 @@
     "carbos": 4,
     "grasa": 2,
     "foto": "fotos/2026-10-08/1056-cafe.jpg"
+   },
+   {
+    "id": "20261008-1537-comida",
+    "tipo": "comida",
+    "hora": "15:37",
+    "descripcion": "Pollo a la plancha (~120 g cocinado) con arroz blanco (~250 g cocido) y algo de aceite - raciones y macros estimados por foto; solo el plato visible",
+    "kcal": 570,
+    "proteina": 44,
+    "carbos": 70,
+    "grasa": 10,
+    "foto": "fotos/2026-10-08/1537-pollo-arroz.jpg"
    }
   ]
  }
