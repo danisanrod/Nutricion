@@ -264,6 +264,17 @@
     "carbos": 70,
     "grasa": 10,
     "foto": "fotos/2026-10-08/1537-pollo-arroz.jpg"
+   },
+   {
+    "id": "20261008-1925-comida",
+    "tipo": "comida",
+    "hora": "19:25",
+    "descripcion": "4 tostadas de pan integral (~120 g) con mermelada de melocotón Auchan Diet (~120 g) - cantidades estimadas por foto; mermelada 52 kcal/100 g según etiqueta",
+    "kcal": 380,
+    "proteina": 12,
+    "carbos": 72,
+    "grasa": 4,
+    "foto": "fotos/2026-10-08/1925-tostadas.jpg"
    }
   ]
  }
