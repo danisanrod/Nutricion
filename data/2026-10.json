@@ -286,6 +286,17 @@
     "carbos": 72,
     "grasa": 7,
     "foto": "fotos/2026-10-08/2327-pierogis.jpg"
+   },
+   {
+    "id": "20261008-2338-comida",
+    "tipo": "comida",
+    "hora": "23:38",
+    "descripcion": "2 yogures Auchan 0,0 de limón (2 × 125 g) y arándanos (~225 g, punto medio de los 200-250 g indicados) - estimación; yogur según ficha Alcampo",
+    "kcal": 220,
+    "proteina": 12,
+    "carbos": 45,
+    "grasa": 1,
+    "foto": "fotos/2026-10-08/2338-yogur-arandanos.jpg"
    }
   ]
  }
