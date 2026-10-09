@@ -324,6 +324,17 @@
     "carbos": 16,
     "grasa": 21,
     "foto": ""
+   },
+   {
+    "id": "20261009-1533-batido",
+    "tipo": "comida",
+    "hora": "15:33",
+    "descripcion": "Segundo batido, el habitual: 1 scoop de proteína (~30 g), leche semidesnatada (~400 ml), cacao puro (~10 g) y crema de cacahuete (~15-20 g) - cantidades y macros estimados",
+    "kcal": 455,
+    "proteina": 45,
+    "carbos": 25,
+    "grasa": 21,
+    "foto": ""
    }
   ]
  }
