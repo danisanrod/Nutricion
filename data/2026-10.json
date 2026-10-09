@@ -313,6 +313,17 @@
     "carbos": 4,
     "grasa": 2,
     "foto": ""
+   },
+   {
+    "id": "20261009-1530-batido",
+    "tipo": "comida",
+    "hora": "15:30",
+    "descripcion": "Batido habitual con 1 scoop (~30 g), bebida de soja (~400 ml), cacao puro (~10 g) y crema de cacahuete (~15-20 g) - estimado; soja tipo original, marca y azúcar no confirmados",
+    "kcal": 410,
+    "proteina": 43,
+    "carbos": 16,
+    "grasa": 21,
+    "foto": ""
    }
   ]
  }
