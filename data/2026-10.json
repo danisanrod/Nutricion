@@ -299,5 +299,21 @@
     "foto": "fotos/2026-10-08/2338-yogur-arandanos.jpg"
    }
   ]
+ },
+ {
+  "fecha": "2026-10-09",
+  "eventos": [
+   {
+    "id": "20261009-1530-cafe",
+    "tipo": "comida",
+    "hora": "15:30",
+    "descripcion": "Café habitual con ~100 ml de leche, sin azúcar añadido contabilizado - estimado",
+    "kcal": 50,
+    "proteina": 3,
+    "carbos": 4,
+    "grasa": 2,
+    "foto": ""
+   }
+  ]
  }
 ]
