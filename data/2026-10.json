@@ -369,5 +369,21 @@
     "fuente_message_id": "wamid.HBgLMzQ2OTE3NTY5MjEVAgASGCBBQzIzM0Q5M0IzREYwRDdFOTIzQkY4OUIyRURBQzNCRgA="
    }
   ]
+ },
+ {
+  "fecha": "2026-10-10",
+  "eventos": [
+   {
+    "id": "20261010-1541-batido",
+    "tipo": "comida",
+    "hora": "15:41",
+    "descripcion": "Batido habitual: 1 scoop de proteína (~30 g), leche semidesnatada (~400 ml), cacao puro 100% (~10 g) y crema de cacahuete (~15-20 g) - cantidades y macros estimados",
+    "kcal": 455,
+    "proteina": 45,
+    "carbos": 25,
+    "grasa": 21,
+    "foto": ""
+   }
+  ]
  }
 ]
