@@ -383,6 +383,17 @@
     "carbos": 25,
     "grasa": 21,
     "foto": ""
+   },
+   {
+    "id": "20261010-1546-chuches",
+    "tipo": "comida",
+    "hora": "15:46",
+    "descripcion": "Chuches (~100 g indicados por el usuario), tipo/etiqueta no confirmados - kcal y macros estimados",
+    "kcal": 340,
+    "proteina": 5,
+    "carbos": 80,
+    "grasa": 0,
+    "foto": ""
    }
   ]
  }
