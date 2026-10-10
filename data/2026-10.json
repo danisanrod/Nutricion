@@ -304,6 +304,17 @@
   "fecha": "2026-10-09",
   "eventos": [
    {
+    "id": "20261009-1105-macarrones",
+    "tipo": "comida",
+    "hora": "11:05",
+    "descripcion": "Comida del viernes comunicada el sábado: bol de macarrones con tomate (~350 g, punto medio de 300-400 g; se asume peso cocinado) - kcal/macros estimados; hora real no indicada",
+    "kcal": 600,
+    "proteina": 18,
+    "carbos": 100,
+    "grasa": 14,
+    "foto": ""
+   },
+   {
     "id": "20261009-1530-cafe",
     "tipo": "comida",
     "hora": "15:30",
