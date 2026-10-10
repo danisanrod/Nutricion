@@ -315,6 +315,17 @@
     "foto": ""
    },
    {
+    "id": "20261009-1105-merluza",
+    "tipo": "comida",
+    "hora": "11:05",
+    "descripcion": "Comida del viernes comunicada el sábado: 3 filetes de merluza (~300 g estimados) con 200 g de patata y margen para cocción/aceite - kcal/macros estimados; hora real no indicada",
+    "kcal": 420,
+    "proteina": 58,
+    "carbos": 34,
+    "grasa": 6,
+    "foto": ""
+   },
+   {
     "id": "20261009-1530-cafe",
     "tipo": "comida",
     "hora": "15:30",
